@@ -1,11 +1,6 @@
 package EquationSystem.system;
 
 import EquationSystem.FunctionInterface;
-import EquationSystem.logFunctions.Ln;
-import EquationSystem.logFunctions.Log;
-import EquationSystem.trigFunctions.Cos;
-import EquationSystem.trigFunctions.Sec;
-import EquationSystem.trigFunctions.Sin;
 
 public class EquationSystem implements FunctionInterface {
 
