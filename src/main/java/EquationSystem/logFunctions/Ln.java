@@ -14,7 +14,6 @@ public class Ln implements FunctionInterface {
     }
 
     public double calculate(double x) {
-        System.out.println("in ln " + x);
         if (x < 0) return Double.NaN;
         if (x == 0) return Double.NEGATIVE_INFINITY;
         if (x > 2) return calculate(x / 2.0) + calculate(2.0);
@@ -31,5 +30,9 @@ public class Ln implements FunctionInterface {
             n++;
         }
         return result;
+    }
+
+    public double getAccuracy() {
+        return ACCURACY;
     }
 }

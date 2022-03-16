@@ -1,7 +1,6 @@
 package EquationSystem.trigFunctions;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -37,7 +36,7 @@ class CosTest {
         when(sin.calculate(-Math.PI / 4)).thenReturn(-Math.sqrt(2) / 2);
         when(sin.calculate(-Math.PI / 2)).thenReturn(-1.0);
         when(sin.calculate(-2 * Math.PI / 6)).thenReturn(-Math.sqrt(3) / 2);
-        when(sin.calculate(-3 * Math.PI / 8)).thenReturn(-Math.sqrt(2 + Math.sqrt(2))/2);
+        when(sin.calculate(-3 * Math.PI / 8)).thenReturn(-Math.sqrt(2 + Math.sqrt(2)) / 2);
         when(sin.calculate(-5 * Math.PI / 12)).thenReturn(-(Math.sqrt(6) + Math.sqrt(2)) / 4);
         when(sin.calculate(Double.POSITIVE_INFINITY)).thenReturn(NaN);
         when(sin.calculate(Double.NEGATIVE_INFINITY)).thenReturn(NaN);
@@ -68,7 +67,7 @@ class CosTest {
     @ParameterizedTest(name = "{index}: cos({0}) = {1}")
     @MethodSource
     void calculate(double actual, double expected) {
-        assertEquals(Math.ceil(expected* Math.pow(10, 3)) / Math.pow(10, 3),
-                Math.ceil(cos.calculate(actual)* Math.pow(10, 3)) / Math.pow(10, 3));
+        assertEquals(Math.ceil(expected * Math.pow(10, 3)) / Math.pow(10, 3),
+                Math.ceil(cos.calculate(actual) * Math.pow(10, 3)) / Math.pow(10, 3));
     }
 }
