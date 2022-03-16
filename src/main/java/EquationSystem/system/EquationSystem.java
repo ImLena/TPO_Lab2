@@ -11,20 +11,13 @@ public class EquationSystem implements FunctionInterface {
 
     private LogFunction logFunction;
     private TrigFunction trigFunction;
-    private Ln ln;
-    private Log log;
-    private Sin sin;
-    private Cos cos;
-    private Sec sec;
+
+    public EquationSystem(LogFunction logFunction, TrigFunction trigFunction) {
+        this.logFunction = logFunction;
+        this.trigFunction = trigFunction;
+    }
 
     public double calculate(double x) {
-        ln = new Ln();
-        log = new Log(ln);
-        sin = new Sin();
-        cos = new Cos(sin);
-        sec = new Sec(cos);
-        logFunction = new LogFunction(ln, log);
-        trigFunction = new TrigFunction(sin, cos, sec);
         if (x > 0) return logFunction.calculate(x);
         else return trigFunction.calculate(x);
     }

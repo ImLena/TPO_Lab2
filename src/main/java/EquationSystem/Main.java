@@ -1,15 +1,35 @@
 package EquationSystem;
 
+import EquationSystem.logFunctions.Ln;
+import EquationSystem.logFunctions.Log;
 import EquationSystem.system.EquationSystem;
+import EquationSystem.system.LogFunction;
+import EquationSystem.system.TrigFunction;
+import EquationSystem.trigFunctions.Cos;
+import EquationSystem.trigFunctions.Sec;
+import EquationSystem.trigFunctions.Sin;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
-        EquationSystem equationSystem = new EquationSystem();
+        Ln ln;
+        Log log;
+        Sin sin;
+        Cos cos;
+        Sec sec;
+        LogFunction logFunction;
+        TrigFunction trigFunction;
+        ln = new Ln();
+        log = new Log(ln);
+        sin = new Sin();
+        cos = new Cos(sin);
+        sec = new Sec(cos);
+        logFunction = new LogFunction(ln, log);
+        trigFunction = new TrigFunction(sec);
+        EquationSystem equationSystem = new EquationSystem(logFunction, trigFunction);
         System.out.println("x <= 0 : sec(x)\n" +
                 "x > 0 : (((((ln(x) * log_2(x)) / log_5(x)) * log_10(x)) / (log_3(x) / log_3(x))) + log_5(x))");
         System.out.println(equationSystem.calculate(readValue()));

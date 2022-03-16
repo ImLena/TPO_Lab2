@@ -6,14 +6,9 @@ import EquationSystem.trigFunctions.Sec;
 import EquationSystem.trigFunctions.Sin;
 
 public class TrigFunction implements FunctionInterface {
-
-    private Sin sin;
-    private Cos cos;
     private Sec sec;
 
-    public TrigFunction(Sin sin, Cos cos, Sec sec) {
-        this.sin = sin;
-        this.cos = cos;
+    public TrigFunction(Sec sec) {
         this.sec = sec;
     }
 
