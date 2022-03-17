@@ -16,18 +16,24 @@ public class Main {
 
     public static void main(String[] args) {
         Ln ln;
-        Log log;
+        Log log2;
+        Log log3;
+        Log log5;
+        Log log10;
         Sin sin;
         Cos cos;
         Sec sec;
         LogFunction logFunction;
         TrigFunction trigFunction;
         ln = new Ln();
-        log = new Log(ln);
+        log2 = new Log(ln, 2);
+        log3 = new Log(ln, 3);
+        log5 = new Log(ln, 5);
+        log10 = new Log(ln, 10);
         sin = new Sin();
         cos = new Cos(sin);
         sec = new Sec(cos);
-        logFunction = new LogFunction(ln, log);
+        logFunction = new LogFunction(ln, log2, log3, log5, log10);
         trigFunction = new TrigFunction(sec);
         EquationSystem equationSystem = new EquationSystem(logFunction, trigFunction);
         System.out.println("x <= 0 : sec(x)\n" +
@@ -35,7 +41,7 @@ public class Main {
         System.out.println(equationSystem.calculate(readValue()));
     }
 
-    private static double readValue(){
+    private static double readValue() {
         double num = 0.0;
         try {
             System.out.println("Введите число:");

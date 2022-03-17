@@ -15,7 +15,10 @@ import static org.mockito.Mockito.when;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class LogTest {
     private Ln ln;
-    private Log log;
+    private Log log2;
+    private Log log3;
+    private Log log5;
+    private Log log10;
 
     @BeforeEach
     void setUp() {
@@ -34,7 +37,10 @@ class LogTest {
         when(ln.calculate(10.0)).thenReturn(2.303);
         when(ln.calculate(100.0)).thenReturn(4.60517);
 
-        log = new Log(ln);
+        log2 = new Log(ln, 2);
+        log3 = new Log(ln, 3);
+        log5 = new Log(ln, 5);
+        log10 = new Log(ln, 10);
     }
 
     private Stream<Arguments> calculateLog2() {
@@ -52,7 +58,7 @@ class LogTest {
     @MethodSource
     public void calculateLog2(double x, double expected){
         assertEquals(Math.ceil(expected* Math.pow(10, 3)) / Math.pow(10, 3),
-                Math.ceil(log.calculate(2.0, x)* Math.pow(10, 3)) / Math.pow(10, 3));
+                Math.ceil(log2.calculate(x)* Math.pow(10, 3)) / Math.pow(10, 3));
     }
     private Stream<Arguments> calculateLog3() {
         return Stream.of(
@@ -69,7 +75,7 @@ class LogTest {
     @MethodSource
     public void calculateLog3(double x, double expected){
         assertEquals(Math.ceil(expected* Math.pow(10, 3)) / Math.pow(10, 3),
-                Math.ceil(log.calculate(3.0, x)* Math.pow(10, 3)) / Math.pow(10, 3));
+                Math.ceil(log3.calculate(x)* Math.pow(10, 3)) / Math.pow(10, 3));
     }
 
     private Stream<Arguments> calculateLog5() {
@@ -87,7 +93,7 @@ class LogTest {
     @MethodSource
     public void calculateLog5(double x, double expected){
         assertEquals(Math.ceil(expected* Math.pow(10, 3)) / Math.pow(10, 3),
-                Math.ceil(log.calculate(5.0, x)* Math.pow(10, 3)) / Math.pow(10, 3));
+                Math.ceil(log5.calculate(x)* Math.pow(10, 3)) / Math.pow(10, 3));
     }
 
     private Stream<Arguments> calculateLog10() {
@@ -105,6 +111,6 @@ class LogTest {
     @MethodSource
     public void calculateLog10(double x, double expected){
         assertEquals(Math.ceil(expected* Math.pow(10, 3)) / Math.pow(10, 3),
-                Math.ceil(log.calculate(10.0, x)* Math.pow(10, 3)) / Math.pow(10, 3));
+                Math.ceil(log10.calculate(x)* Math.pow(10, 3)) / Math.pow(10, 3));
     }
 }

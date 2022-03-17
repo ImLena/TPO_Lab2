@@ -20,7 +20,10 @@ import static org.mockito.Mockito.when;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class LogFunctionTest {
     private Ln ln;
-    private Log log;
+    private Log log2;
+    private Log log3;
+    private Log log5;
+    private Log log10;
     private LogFunction logFunction;
 
     @BeforeEach
@@ -32,33 +35,36 @@ class LogFunctionTest {
         when(ln.calculate(2.0)).thenReturn(0.693);
         when(ln.calculate(4.0)).thenReturn(1.386);
         when(ln.calculate(10.0)).thenReturn(2.303);
-        log = Mockito.mock(Log.class);
-        when(log.calculate(2.0,0.0)).thenReturn(Double.NEGATIVE_INFINITY);
-        when(log.calculate(3.0,0.0)).thenReturn(Double.NEGATIVE_INFINITY);
-        when(log.calculate(5.0,0.0)).thenReturn(Double.NEGATIVE_INFINITY);
-        when(log.calculate(10.0,0.0)).thenReturn(Double.NEGATIVE_INFINITY);
-        when(log.calculate(2.0,0.125)).thenReturn(-3.0);
-        when(log.calculate(2.0,0.5)).thenReturn( -1.0);
-        when(log.calculate(2.0,1.0)).thenReturn(0.0);
-        when(log.calculate(2.0,2.0)).thenReturn(1.0);
-        when(log.calculate(2.0, 10.0)).thenReturn(3.322);
-        when(log.calculate(3.0, 0.125)).thenReturn(-1.89279);
-        when(log.calculate(3.0,0.5)).thenReturn(-0.63093);
-        when(log.calculate(3.0,1.0)).thenReturn(0.0);
-        when(log.calculate(3.0,2.0)).thenReturn(0.631);
-        when(log.calculate(3.0,10.0)).thenReturn(2.096);
-        when(log.calculate(5.0,0.125)).thenReturn(-1.29203);
-        when(log.calculate(5.0, 0.5)).thenReturn(-0.430677);
-        when(log.calculate(5.0, 1.0)).thenReturn(0.0);
-        when(log.calculate(5.0, 2.0)).thenReturn(0.431);
-        when(log.calculate(5.0, 10.0)).thenReturn(1.431);
-        when(log.calculate(10.0, 0.125)).thenReturn(-0.902);
-        when(log.calculate(10.0, 0.5)).thenReturn(-0.3);
-        when(log.calculate(10.0, 1.0)).thenReturn(0.0);
-        when(log.calculate(10.0, 2.0)).thenReturn(0.301);
-        when(log.calculate(10.0, 10.0)).thenReturn(1.0);
-        when(log.calculate(10.0, 100.0)).thenReturn(2.0);
-        logFunction = new LogFunction(ln, log);
+        log2 = Mockito.mock(Log.class);
+        log3 = Mockito.mock(Log.class);
+        log5 = Mockito.mock(Log.class);
+        log10 = Mockito.mock(Log.class);
+        when(log2.calculate(0.0)).thenReturn(Double.NEGATIVE_INFINITY);
+        when(log3.calculate(0.0)).thenReturn(Double.NEGATIVE_INFINITY);
+        when(log5.calculate(0.0)).thenReturn(Double.NEGATIVE_INFINITY);
+        when(log10.calculate(0.0)).thenReturn(Double.NEGATIVE_INFINITY);
+        when(log2.calculate(0.125)).thenReturn(-3.0);
+        when(log2.calculate(0.5)).thenReturn( -1.0);
+        when(log2.calculate(1.0)).thenReturn(0.0);
+        when(log2.calculate(2.0)).thenReturn(1.0);
+        when(log2.calculate( 10.0)).thenReturn(3.322);
+        when(log3.calculate( 0.125)).thenReturn(-1.89279);
+        when(log3.calculate(0.5)).thenReturn(-0.63093);
+        when(log3.calculate(1.0)).thenReturn(0.0);
+        when(log3.calculate(2.0)).thenReturn(0.631);
+        when(log3.calculate(10.0)).thenReturn(2.096);
+        when(log5.calculate(0.125)).thenReturn(-1.29203);
+        when(log5.calculate(0.5)).thenReturn(-0.430677);
+        when(log5.calculate(1.0)).thenReturn(0.0);
+        when(log5.calculate(2.0)).thenReturn(0.431);
+        when(log5.calculate(10.0)).thenReturn(1.431);
+        when(log10.calculate(0.125)).thenReturn(-0.902);
+        when(log10.calculate(0.5)).thenReturn(-0.3);
+        when(log10.calculate(1.0)).thenReturn(0.0);
+        when(log10.calculate(2.0)).thenReturn(0.301);
+        when(log10.calculate(10.0)).thenReturn(1.0);
+        when(log10.calculate(100.0)).thenReturn(2.0);
+        logFunction = new LogFunction(ln, log2, log3, log5, log10);
 
     }
     private Stream<Arguments> calculate() {
